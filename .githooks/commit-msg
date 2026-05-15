@@ -1,0 +1,6 @@
+#!/bin/sh
+# Drop Co-authored-by lines so optional IDE trailers never enter history.
+f="$1"
+[ -n "$f" ] && [ -f "$f" ] || exit 0
+grep -v '^Co-authored-by:' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+exit 0
